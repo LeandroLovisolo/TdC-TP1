@@ -28,13 +28,15 @@ def monitor_callback(pkt):
 	if ARP in pkt:
 		#Usuo sprintf para ARP para que me nombre la operacion, no el numero
 		op = pkt.sprintf("%ARP.op%")
-		#Alternativa 1
-		#print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst)
-		#Alternativa 2
-		print pkt.sprintf("%ARP.op%, %ARP.hwsrc%, %ARP.hwdst%, %ARP.psrc%, %ARP.pdst%")
+		#Imprimo solo los who-has
+		if pkt[ARP].op == 1:
+			#Alternativa 1
+			#print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst)
+			#Alternativa 2
+			print pkt.sprintf("%ARP.op%, %ARP.hwsrc%, %ARP.hwdst%, %ARP.psrc%, %ARP.pdst%, %Ether.dst%, %Ether.src%")
 
 
 if __name__ == '__main__':
 	#Operacion 1: who-has
-	print "Operacion, MAC Src, MAC dst, IP Src, IP Dst"
+	print "ARP-Operacion, ARP-MAC-Src, ARP-MAC-Dst, ARP-IP-Src, ARP-IP-Dst, Ether-MAC-Dst, Ether-MAC-Src"
 	sniff(prn=monitor_callback, filter = "arp", store = 0)
