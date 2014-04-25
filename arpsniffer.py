@@ -22,7 +22,7 @@
 
 #Script captura paquetes ARP correr con sudo y tener tcpdump instalado
 from scapy.all import *
-
+import time
 def monitor_callback(pkt):
 	#print pkt.show() Solo para debugging
 	if ARP in pkt:
@@ -31,12 +31,12 @@ def monitor_callback(pkt):
 		#Imprimo solo los who-has
 		if pkt[ARP].op == 1:
 			#Alternativa 1
-			#print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst) + ", " + str(pkt[Ether].dst) + ", " + str(pkt[Ether].src)
+			print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst) + ", " + str(pkt[Ether].dst) + ", " + str(pkt[Ether].src + ", " + str(int(time.time())))
 			#Alternativa 2
-			print pkt.sprintf("%ARP.op%, %ARP.hwsrc%, %ARP.hwdst%, %ARP.psrc%, %ARP.pdst%, %Ether.dst%, %Ether.src%")
+			#print pkt.sprintf("%ARP.op%, %ARP.hwsrc%, %ARP.hwdst%, %ARP.psrc%, %ARP.pdst%, %Ether.dst%, %Ether.src%")
 
 
 if __name__ == '__main__':
 	#Operacion 1: who-has
-	print "ARP-Operacion, ARP-MAC-Src, ARP-MAC-Dst, ARP-IP-Src, ARP-IP-Dst, Ether-MAC-Dst, Ether-MAC-Src"
+	print "ARP-Operacion, ARP-MAC-Src, ARP-MAC-Dst, ARP-IP-Src, ARP-IP-Dst, Ether-MAC-Dst, Ether-MAC-Src, Tiempo"
 	sniff(prn=monitor_callback, filter = "arp", store = 0)
