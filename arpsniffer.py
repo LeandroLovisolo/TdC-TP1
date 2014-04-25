@@ -13,7 +13,7 @@
 # print r "\begin{tabular}{|l|l|}"
 # print r "\hline"
 # print r "\MAC & IP \\"
-# print r "\hline"
+# print r "\hline
 # for snd, rcv in ans:
 # 	print rcv.sprintf(r" %Ether.src&& ARP.prsc & \\")
 # printr r"\hline"
@@ -31,7 +31,7 @@ def monitor_callback(pkt):
 		#Imprimo solo los who-has
 		if pkt[ARP].op == 1:
 			#Alternativa 1
-			#print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst)
+			#print op+", "+str(pkt[ARP].hwsrc)+", "+str(pkt[ARP].hwdst)+", "+str(pkt[ARP].psrc)+", "+str(pkt[ARP].pdst) + ", " + str(pkt[Ether].dst) + ", " + str(pkt[Ether].src)
 			#Alternativa 2
 			print pkt.sprintf("%ARP.op%, %ARP.hwsrc%, %ARP.hwdst%, %ARP.psrc%, %ARP.pdst%, %Ether.dst%, %Ether.src%")
 
