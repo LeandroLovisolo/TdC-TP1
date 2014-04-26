@@ -1,4 +1,4 @@
-#! / usr / bin /env python
+#!/usr/bin/env python
 
 #Script comentado es script dado en el taller (transcripto por si es necesario)
 # arping2tex : arpings a network and outputs a LaTeX table as a r e s u l t
