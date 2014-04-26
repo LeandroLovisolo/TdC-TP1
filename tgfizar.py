@@ -26,3 +26,5 @@ print "#"
 
 for i in range(len(ips_en_red)):
 	print str(datos.index(sys.argv[2])+1) + " " + str(i+1)
+
+f.close()
