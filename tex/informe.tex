@@ -138,8 +138,8 @@ Address Resolution Protocol (ARP) es un protocolo usado frecuentemente por las r
 
 Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y de respuesta.
 \begin{itemize}
-	\item Los paquetes de petición (\texttt{who-has}) son enviados mayormente en forma de broadcast con el objetivo de poder localizar la dirección MAC a la cuál le pertenece una IP conocida.
-	\item Los paquetes de respuesta (\texttt{is-at}) son enviados de manera uni-cast ya que se utilizan para responder a la máquina que realizó una petición con anterioridad.
+	\item Los paquetes de petición (\textit{who-has}) son enviados mayormente en forma de broadcast con el objetivo de poder localizar la dirección MAC a la cuál le pertenece una IP conocida.
+	\item Los paquetes de respuesta (\textit{is-at}) son enviados de manera uni-cast ya que se utilizan para responder a la máquina que realizó una petición con anterioridad.
 \end{itemize}
 
 La estructura de los paquetes ARP es simple, consiste principalmente de los siguientes campos:
@@ -182,9 +182,9 @@ Identificamos las redes según su SSID:
 
 La captura de paquetes ARP consistió en el monitoreo de los paquetes ARP durante media hora aproximadamente para cada red Wi-Fi. Se almacenaron los campos principales de cada paquete para luego realizar el análisis estadístico.
 
-Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers que actúan como \textit{gateway} de cada red analizada. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \texttt{who-has} la tienen como emisor y la segunda, cuántos paquetes \texttt{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
+Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers que actúan como \textit{gateway} de cada red analizada. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \textit{who-has} la tienen como emisor y la segunda, cuántos paquetes \textit{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
 
-Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \texttt{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.}.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.}.
 
 A continuación, realizamos la identificación de el o los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
@@ -209,7 +209,7 @@ Para obtener una visualización de la red con la que se está trabajando, grafic
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
 
 \input{altopalermo-source}
 \vspace{2cm}
@@ -217,7 +217,7 @@ Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} 
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
 
 \input{altopalermo-destination}
 \vspace{2cm}
@@ -241,7 +241,7 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}}
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
 
 \input{mcdonalds-source}
 \vspace{2cm}
@@ -249,7 +249,7 @@ Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} 
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
 
 \input{mcdonalds-destination}
 \vspace{2cm}
@@ -265,7 +265,7 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}}
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
 
 \input{starbucks-source}
 \vspace{2cm}
@@ -273,7 +273,7 @@ Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} 
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
 
 \input{starbucks-destination}
 \vspace{2cm}
@@ -316,11 +316,11 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \subsubsection{Paquetes ARP con IP origen 0.0.0.0}
 
-Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
+Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
-Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \texttt{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \texttt{who-has} es respuesto, el cliente rechaza el IP elegido.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respuesto, el cliente rechaza el IP elegido.
 
 %Ver como colocar las referencias
 %http://www.ietf.org/rfc/rfc2131.txt
