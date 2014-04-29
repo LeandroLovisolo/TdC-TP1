@@ -1,4 +1,4 @@
-.PHONY: all clean
+.PHONY: all clean informe.pdf
 
 all: informe.pdf
 
