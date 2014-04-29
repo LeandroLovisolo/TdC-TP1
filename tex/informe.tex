@@ -294,7 +294,7 @@ Limitamos el gráfico a los 10 símbolos con menor información.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
-Red & Tamaño de la muestra & Tiempo de captura (minutos)\\
+Red & Tamaño de la muestra (paquetes) & Tiempo de captura (minutos)\\
 \hline
 Alto Palermo & \altopalermoSampleSize & \altopalermoSampleTime\\
 McDonald's   & \mcdonaldsSampleSize   & \mcdonaldsSampleTime\\
@@ -357,10 +357,6 @@ El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
 Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
-
-%Ver como colocar las referencias
-%http://www.ietf.org/rfc/rfc2131.txt
-%4.4.1
 
 
 \subsection{Direcciones en el rango 169.254.0.0/16}
