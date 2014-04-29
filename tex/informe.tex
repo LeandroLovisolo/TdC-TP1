@@ -356,6 +356,23 @@ Este escenario se presentó en muchas ocasiones, en todas las redes analizadas. 
 
 Por ejemplo, si un host envía un Gratuitous ARP y recibe una respuesta, ya detectó un conflicto de IP, pues nadie debería responder a un request que tiene como destino el propio host.
 
+\subsection{Red \emph{Alto Palermo}}
+En esta red, puede obersvarse el fenómeno dónde existe una máquina la cual envía ARP's a multiples IP, que como interpretamos, debe ser el gateway de la red, el cuál desea mantener su tabla ARP actualizada. Casi la totalidad de los paquetes ARP capturados son desde el IP que suponemos el router, esto puede deberse a que, los hosts estaban conectados hace un tiempo y como suponemos anteriormente, los paquetes ARP enviados desde el router tienen como objetivo actualizar las tablas ARP de los destinatarios con su dirección MAC, preveniendo una petición por su parte.
+
+Utilizando el grafo de la topología de la red según los paquetes ARP enviados y los datos de la información de cada IP, podemos inferir que la IP 172.17.0.1, la cuál tiene la mínima cantidad de información como símbolo, es decir, la IP que más actividad ARP posee, parece ser el router de la red.
+
+\subsection{Red \emph{McDonald's}}
+La red de McDonald's es la red de mayor tamaño analizada. Pueden observarse a simple vista, dos IP, 172.17.12.2 la cuál tiene una alta cantidad de paquetes ARP como fuente y destino y 172.17.12.1 la cuál es parte del destino de muchos paquetes ARP capturados en la red.
+
+Puede observarse en los gráficos de información, que tomando la fuente como Ssrc, la IP 172.17.12.1 que veíamos en los grafo como una IP muy frecuente en los paquetes ARP, posee demaciada información y no es retratada en el gráfico y la IP 172.17.12.2 que también se muestra muy frecuente, aparece como una IP de baja información, pero no es la más baja, por lo que la heurística podría estar fallando.
+
+En el caso de tomar como fuente Sdst, ambas IP IP 172.17.12.1 y IP 172.17.12.2 aparecen como las IP de menor información, ayudando a la suposición de que estas IP podrían  pertenecer a routers.
+
+Además de las IP descriptas, existen dos IP, 172.17.203.1 y 172.17.203.2, aisladas de las demás peticiones ARP en el grafo de la red, las cuales parecen tener un comportamiento similar a un router, esto se debe a que las otras IP con las que interactúa, solo interactúan con estas. Estas IP no son significativas en términos de información, por lo que no aparecen en los gráficos, lo que pudiera ser una indicio de que la huerística de encontrar el router por menor información puede no identificar a todos los routers de la red. 
+
+Como último, puede verse el fenómeno de la IP 0.0.0.0 y las IP en rango 169.254.0.0/16. Este fenómeno muestra la existencia de nuevas conecciones las cuales se asignaron IP en el rango 169.254.0.0/16, emitieron un paquete ARP \textit{gratuoitous} para avisar al resto que se asignaron esa IP temporal para luego realizar la comunicación con el servidor DHCP.
+
+\subsection{Red \emph{Starbucks}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
