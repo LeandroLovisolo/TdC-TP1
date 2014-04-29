@@ -1,22 +1,20 @@
 #!/usr/bin/octave -qf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Uso: ./histograma <datos> <figura>                                          %
+% Uso: ./graficar_informacion <datos> <figura>                                %
 %                                                                             %
-% Este script lee una tabla de IPs/entropía del path <datos> y genera un      %
-% histograma ordenado de menor a mayor entropía. El histograma es guardado    %
-% como <figura>.tex.                                                          %
+% Este script lee una tabla de IPs/información del path <datos> y genera un   %
+% gráfico de barras que es guardado como <figura>.tex.                        %
 %                                                                             %
 % Formato de los datos esperados en la entrada standard:                      %
 %                                                                             %
-% ip_1 entropia_ip_1                                                          %
-% ip_2 entropia_ip_2                                                          %
+% ip_1 informacion_ip_1                                                       %
+% ip_2 informacion_ip_2                                                       %
 % ...                                                                         %
-% ip_n entropia_ip_n                                                          %
+% ip_n informacion_ip_n                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 graphics_toolkit('gnuplot');
-
 
 if(length(argv()) != 2)
 	printf('Parámetros incorrectos. Ver comentarios al principio del script.\n');
@@ -31,7 +29,7 @@ figure    = argv(){2};
 bar(entropy);
  xlim([0 length(ips) + 1]);
 
-ylabel('Entrop\''ia');
+ylabel('Informaci\''on');
 
 % xticks verticales según este link: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % http://octave.1599824.n4.nabble.com/vertical-xtick-labels-td1636894.html

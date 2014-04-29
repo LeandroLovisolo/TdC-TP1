@@ -1,0 +1,56 @@
+#!/usr/bin/env python2
+
+import sys
+from math import log
+
+def information(p): return -log(p, 2)
+
+def help():
+    sys.exit("Usage: %s [source | destination] < [data]\n" +
+             "       %s [source | destination] [limit] < [data]" % sys.argv[0])
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] not in ["source", "destination"]:
+       help()
+
+    information_source = sys.argv[1]
+
+    if len(sys.argv) == 3:
+        try:
+            limit = int(sys.argv[2])
+            if limit < 0: help()
+        except ValueError: help()
+    else:
+        limit = None
+
+    file = open("/dev/stdin")
+    lines = file.readlines()
+    file.close()
+
+    ip_frequencies = {}
+    n  = 0
+
+    for line in lines[1:]:
+        fields = line.split(", ")
+        src_ip = fields[3]
+        dst_ip = fields[4]
+        ip     = src_ip if information_source == "source" else dst_ip
+        
+        if ip not in ip_frequencies: ip_frequencies[ip] = 0
+        ip_frequencies[ip] += 1
+
+        n += 1
+
+    ip_informations = []
+
+    for ip in ip_frequencies.keys():        
+        p = float(ip_frequencies[ip]) / n
+        ip_informations.append({"ip": ip, "information": information(p)})
+    
+    ip_informations = sorted(ip_informations, key = lambda x: x["information"])
+    
+    if limit != None:
+        ip_informations = ip_informations[0:limit]
+
+    for ip_information in ip_informations:
+        print "%s %f" % (ip_information["ip"], ip_information["information"])

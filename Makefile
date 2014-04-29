@@ -13,22 +13,22 @@ informe.pdf: tex/informe.tex tex/*.jpg tex/*.png
 graficos: graficos-altopalermo graficos-mcdonalds graficos-starbucks
 
 graficos-altopalermo:
-	./entropia.py source < data/altopalermo.txt > tmp.txt
-	./histograma tmp.txt altopalermo-source
-	./entropia.py destination < data/altopalermo.txt > tmp.txt
-	./histograma tmp.txt altopalermo-destination
+	./informacion source 10 < data/altopalermo.txt > tmp.txt
+	./graficar_informacion tmp.txt altopalermo-source
+	./informacion destination 10 < data/altopalermo.txt > tmp.txt
+	./graficar_informacion tmp.txt altopalermo-destination
 	rm tmp.txt
 
 graficos-mcdonalds:
-	./entropia.py source < data/mcdonalds.txt > tmp.txt
-	./histograma tmp.txt mcdonalds-source
-	./entropia.py destination < data/mcdonalds.txt > tmp.txt
-	./histograma tmp.txt mcdonalds-destination
+	./informacion source 10 < data/mcdonalds.txt > tmp.txt
+	./graficar_informacion tmp.txt mcdonalds-source
+	./informacion destination 10 < data/mcdonalds.txt > tmp.txt
+	./graficar_informacion tmp.txt mcdonalds-destination
 	rm tmp.txt
 
 graficos-starbucks:
-	./entropia.py source < data/starbucks.txt > tmp.txt
-	./histograma tmp.txt starbucks-source
-	./entropia.py destination < data/starbucks.txt > tmp.txt
-	./histograma tmp.txt starbucks-destination
+	./informacion source 10 < data/starbucks.txt > tmp.txt
+	./graficar_informacion tmp.txt starbucks-source
+	./informacion destination 10 < data/starbucks.txt > tmp.txt
+	./graficar_informacion tmp.txt starbucks-destination
 	rm tmp.txt
