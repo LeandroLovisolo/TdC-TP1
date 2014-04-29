@@ -325,15 +325,18 @@ Como el servidor realiza la misma operación con todos los demás clientes que p
 %4.4.1
 
 
-\subsubsection{Paquetes ARP con MAC destino 00:00:00:00:00:00}
-
-Esta MAC es utilizada como dirección de destino para los paquetes llamados de \textit{ARP gratuito}\footnote{\url{http://wiki.wireshark.org/Gratuitous_ARP}}. Este modo de uso del protocolo es mayormente para detectar conflictos de IP en la red o actualizar información en las tablas de los vecinos. La dirección en cuestión se interpreta como broadcast, pero fácilmente distinguible de los paquetes ARP estándar.
-
-
 \subsubsection{Direcciones en el rango 169.254.0.0/16}
+
+Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/16 como dirección IP origen o destino, el cual difiere con el rango utilizado para las IP asignadas por el servidor DHCP a los dispositivos de la red. Las direcciones en este rango se denominan \textit{direcciones de enlace local}, y son direcciones reservadas. Un host puede eventualmente asignarse una IP libre (lo corrobora con ARP) de enlace local para poder acceder de forma básica a la red cuando todavía no se le ha asignado una IP válida, ya sea de forma manual o automática (DHCP).\footnote{\url{http://tools.ietf.org/html/rfc3927}}
+
+Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
 
 
 \subsubsection{Misma IP como origen y destino}
+
+Este escenario se presentó en muchas ocasiones, en todas las redes analizadas. Se trata de una forma de uso del protocolo llamada \textit{Gratuitous ARP}\footnote{\url{http://wiki.wireshark.org/Gratuitous_ARP}}, que existe mayormente para detectar conflictos de IP en la red, o para actualizar la información en las tablas de los vecinos.
+
+Por ejemplo, si un host envía un Gratuitous ARP y recibe una respuesta, ya detectó un conflicto de IP, pues nadie debería responder a un request que tiene como destino el propio host.
 
 
 
