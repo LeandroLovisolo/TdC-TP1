@@ -58,11 +58,11 @@
 %%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
 
 
-%%%%%%%%%% Insertar diagrama - Inicio %%%%%%%%%%
-\newcommand{\diagrama}[1]{
-  \includegraphics[width=20cm]{#1}
+%%%%%%%%%% Insertar grafo - Inicio %%%%%%%%%%
+\newcommand{\grafo}[1]{
+  \includegraphics[type=png,ext=.png,read=.png,width=16cm]{#1}
 }
-%%%%%%%%%% Insertar diagrama - Fin %%%%%%%%%%
+%%%%%%%%%% Insertar grafo - Fin %%%%%%%%%%
 
 
 \begin{document}
@@ -96,7 +96,7 @@ Trabajo Práctico 1
 \vspace{0.5cm}
 
 \begin{Large}
-Teoría de las comunicaciones
+Teoría de las Comunicaciones
 \end{Large}
 
 \vspace{1cm}
@@ -109,9 +109,9 @@ Primer Cuatrimestre de 2014
 \hline
 Apellido y Nombre & LU & E-mail\\
 \hline
-Delgado Alejandro N.  & 601/11 & nahueldelgado@gmail.com\\
-Lovisolo Leandro      & 645/11 & leandro@leandro.me\\
-Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
+Delgado, Alejandro N.  & 601/11 & nahueldelgado@gmail.com\\
+Lovisolo, Leandro      & 645/11 & leandro@leandro.me\\
+Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 \hline
 \end{tabular}
 
@@ -119,8 +119,7 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 \newpage
 
-% Dos columnas para aparentar trabajo científico
-\begin{multicols}{2}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introducción                                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +128,7 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 \section{Introducción}
 
 
+\include{barras}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Desarrollo                                                                %%
@@ -136,6 +136,29 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 \section{Desarrollo}
+
+
+\subsection{Red \emph{Alto Palermo}}
+
+\grafo{altopalermo}
+
+
+\subsection{Red \emph{McDonald's}}
+
+\grafo{mcdonalds}
+
+\grafo{mcdonalds-172.17.12.2}
+
+\grafo{mcdonalds-172.17.12.1}
+
+\grafo{mcdonalds-172.17.203.1}
+
+\grafo{mcdonalds-0.0.0.0}
+
+
+\subsection{Red \emph{Starbucks}}
+
+\grafo{starbucks}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,5 +183,6 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 \section{Conclusión}
-\end{multicols}
+
+
 \end{document}
