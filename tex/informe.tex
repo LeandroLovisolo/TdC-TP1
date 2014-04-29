@@ -393,6 +393,13 @@ Además de las IP descriptas, existen dos IP, 172.17.203.1 y 172.17.203.2, aisla
 Como último, puede verse el fenómeno de la IP 0.0.0.0 y las IP en rango 169.254.0.0/16. Este fenómeno muestra la existencia de nuevas conecciones las cuales se asignaron IP en el rango 169.254.0.0/16, emitieron un paquete ARP \textit{gratuoitous} para avisar al resto que se asignaron esa IP temporal para luego realizar la comunicación con el servidor DHCP.
 
 \subsection{Red \emph{Starbucks}}
+La red de Starbucks analizada, es facil notar en el grafo de la red dos fenómenos, la alta cantidad de paquetes ARP con destino y fuente 10.254.31.1 y los paquetes ARP que poseen como fuente a la ip 0.0.0.0 y tiene destinos múltiples.
+
+El primer fenómeno parece indicar que la IP 10.254.31.1 corresponde al router debido a su alta aparición en los paquetes ARP. Utilizando la heurística propuesta de identificar al router con la IP de menor información, la IP 10.254.31.1 parece coincidir, ya que brinda la menor cantidad de información en relación a las demás IP.
+
+En cuanto a los paquetes con fuente 0.0.0.0, parece que se capturaron los paquetes ARP en el momento en que varios IP comprobaban que la IP ofrecida por el servidor DHCP no estuviera en conflicto con otras en la red.
+
+Además de estos dos fenómenos notorios, también pueden encontrarse IP del rango 169.254.0.0/16 lo que muestra nuevas conecciones a la red.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
