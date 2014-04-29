@@ -125,7 +125,33 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Introducción}
+\section{Introducción téorica}
+En este trabajo realizamos un análisis de redes mediante la captura de paquetes ARP.
+
+Address Resolution Protocol (ARP) es un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de IP's v4 con direcciones físicas MAC's.
+
+Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y de respuesta.
+\begin{itemize}
+	\item Los paquetes de petición (\texttt{who-has}) son enviados mayormente en forma de broadcast con el objetivo de poder localizar la dirección MAC a la cuál le pertenece una IP conocida.
+	\item Los paquetes de respuesta (\texttt{is-at}) son enviados de manera uni-cast ya que se utilizan para responder a la máquina que realizó una petición con anterioridad.
+\end{itemize}
+
+La estructura de los paquetes ARP es simple, consiste principalmente de los siguientes campos:
+
+\begin{tabular}{| l | p{10cm} |}
+	\hline
+	Operación & Especifica la operación que el emisor está realizando, 1 para petición, 2 para responder \\ \hline
+	Dirección MAC del emisor & \\ \hline
+	Dirección IP del emisor & \\ \hline
+	Dirección MAC del receptor & Este campo se ignora en las respuestas \\ \hline
+	Dirección IP del receptor & \\ \hline
+\end{tabular}
+
+\textbf{Ejemplo práctico de su utilización:}
+
+Una máquina en una red quiere mandarle un paquete de datos a otra máquina en la misma red. Para esto, la máquina emisora busca en su tabla local, la dirección MAC asociada a la dirección IP a la cuál quiere mandar el paquete. Si no la encuentra, realiza el broadcasts de la petición ARP, la cual llegará eventualmente, si se encuentra conectada, a la máquina destino. La máquina destino recibirá la petición y la responderá de manera uni-cast hacia la máquina que realizó la petición, poniendo en el paquete su dirección MAC para que la máquina destino de la respuesta pueda conocer la dirección MAC que necesitaba.
+
+El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP's, como fuente y como destino, tomando a las IP's como símbolos y estimado su probabilidad de aparición con su frecuencia muestral.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
