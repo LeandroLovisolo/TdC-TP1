@@ -20,16 +20,29 @@ def compute_information_sources(ips):
         sources.append([ip, entropy(probabilities), sample_size, sorted(ips[ip])])
     return sorted(sources, key = lambda x: x[1])
 
+def help():
+    sys.exit("Usage: %s [source | destination] < [data]\n"
+             "       %s [source | destination] verbose < [data]"  % (sys.argv[0], sys.argv[0]))
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] not in ["source", "destination"]:
-        sys.exit("Usage: %s [source | destination] < [data]" % sys.argv[0])
-        exit(-1)
+    if  len(sys.argv) <  2 or \
+       (len(sys.argv) <= 3 and sys.argv[1] not in ["source", "destination"]) or \
+       (len(sys.argv) == 3 and sys.argv[2] != "verbose") or \
+        len(sys.argv) >  3:
+       help()
+
+    verbose = len(sys.argv) == 3
 
     file = open("/dev/stdin")
     lines = file.readlines()
     file.close()
 
+    # Keys: source IP address
+    # Values: sequence of ARP "who-has" destination IP addresses sent from the key IP address
     src_ips = {}
+
+    # Keys: destination IP address
+    # Values: sequence of ARP "who-has" source IP addresses received by key IP address
     dst_ips = {}
 
     for line in lines[1:]:
@@ -45,13 +58,14 @@ if __name__ == "__main__":
 
     information_sources = compute_information_sources(src_ips if(sys.argv[1] == "source") else dst_ips)
 
-    # Print everything as CSV
-    for source in information_sources:
-        line = "%s, %f, %d" % (source[0], source[1], source[2])
-        for ip in source[3]:
-            line += ", " + ip
-        print line
-
-    # Print just the information sources' IP and entropy
-    # for source in information_sources:
-    #     print "%s %f" % (source[0], source[1])
+    if verbose:
+        # Print everything as CSV
+        for source in information_sources:
+            line = "%s %f %d" % (source[0], source[1], source[2])
+            for ip in source[3]:
+                line += " " + ip
+            print line
+    else:
+        # Print just the information sources' IP and entropy
+        for source in information_sources:
+            print "%s %f" % (source[0], source[1])
