@@ -24,8 +24,8 @@
 %%%%%%%%%% Configuración de Fancyhdr - Inicio %%%%%%%%%%
 \pagestyle{fancy}
 \thispagestyle{fancy}
-\lhead{Trabajo Práctico 1 · Ingeniería de Software I}
-\rhead{Delgado · Lovisolo · Petaccio · Requeni · Vita}
+\lhead{Trabajo Práctico 1 · Teoría de las Comunicaciones}
+\rhead{Delgado · Lovisolo · Petaccio}
 \renewcommand{\footrulewidth}{0.4pt}
 \cfoot{\thepage /\pageref{LastPage}}
 
@@ -58,11 +58,11 @@
 %%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
 
 
-%%%%%%%%%% Insertar diagrama - Inicio %%%%%%%%%%
-\newcommand{\diagrama}[1]{
-  \includegraphics[width=20cm]{#1}
+%%%%%%%%%% Insertar grafo - Inicio %%%%%%%%%%
+\newcommand{\grafo}[1]{
+  \includegraphics[type=png,ext=.png,read=.png,width=16cm]{#1}
 }
-%%%%%%%%%% Insertar diagrama - Fin %%%%%%%%%%
+%%%%%%%%%% Insertar grafo - Fin %%%%%%%%%%
 
 
 \begin{document}
@@ -96,7 +96,7 @@ Trabajo Práctico 1
 \vspace{0.5cm}
 
 \begin{Large}
-Teoría de las comunicaciones
+Teoría de las Comunicaciones
 \end{Large}
 
 \vspace{1cm}
@@ -109,9 +109,9 @@ Primer Cuatrimestre de 2014
 \hline
 Apellido y Nombre & LU & E-mail\\
 \hline
-Delgado Alejandro N.  & 601/11 & nahueldelgado@gmail.com\\
-Lovisolo Leandro      & 645/11 & leandro@leandro.me\\
-Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
+Delgado, Alejandro N.  & 601/11 & nahueldelgado@gmail.com\\
+Lovisolo, Leandro      & 645/11 & leandro@leandro.me\\
+Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 \hline
 \end{tabular}
 
@@ -119,8 +119,7 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 \newpage
 
-% Dos columnas para aparentar trabajo científico
-\begin{multicols}{2}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introducción                                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +128,7 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 \section{Introducción}
 
 
+\include{barras}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Desarrollo                                                                %%
@@ -138,6 +138,7 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 \section{Desarrollo}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Resultados                                                                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,6 +146,29 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 \section{Resultados}
 
+\subsection{Red \emph{Alto Palermo}}
+
+\grafo{altopalermo}
+
+
+\subsection{Red \emph{McDonald's}}
+
+\grafo{mcdonalds}
+
+\grafo{mcdonalds-172.17.12.2}
+
+\grafo{mcdonalds-172.17.12.1}
+
+\grafo{mcdonalds-172.17.203.1}
+
+\grafo{mcdonalds-0.0.0.0}
+
+
+\subsection{Red \emph{Starbucks}}
+
+\grafo{starbucks}
+
+\subsection{Datos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Discusión                      			                                 %%
@@ -153,6 +177,18 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 \section{Discusión}
 
+\subsection{Datos encontrados}
+\subsubsection{Paquete ARP con IP fuente 0.0.0.0}
+Podemos detectar en la red de MC Donalds paquetes ARP Who-Has con ip fuente 0.0.0.0.
+La causa de estos ips es debido a lo siguiente:
+Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP's a ese ID.
+El cliente eventualmente podría recibir la oferta, tomar uno de esos IP's y extraer la dirección del router.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, coloca en el paquete Who-Has su MAC adress, la ip 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el who-has es respuesto, el cliente rechaza el IP elegido.
+
+%Ver como colocar las referencias
+%http://www.ietf.org/rfc/rfc2131.txt
+%4.4.1
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Conclusión                                                                %%
@@ -160,5 +196,6 @@ Petaccio Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 \section{Conclusión}
-\end{multicols}
+
+
 \end{document}
