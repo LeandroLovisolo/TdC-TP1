@@ -293,22 +293,31 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \section{Discusión}
 
+\subsection{Fenómenos Destacables}
 
-\subsection{Datos encontrados}
+\subsubsection{Paquetes ARP con IP origen 0.0.0.0}
 
-
-\subsubsection{Paquete ARP con IP fuente 0.0.0.0}
-
-
-Podemos detectar en la red de MC Donalds paquetes ARP Who-Has con ip fuente 0.0.0.0.
-La causa de estos ips es debido a lo siguiente:
+Podemos detectar en la red de Mc Donalds y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
+El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP's a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP's y extraer la dirección del router.
-Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, coloca en el paquete Who-Has su MAC adress, la ip 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el who-has es respuesto, el cliente rechaza el IP elegido.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \texttt{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \texttt{who-has} es respuesto, el cliente rechaza el IP elegido.
 
 %Ver como colocar las referencias
 %http://www.ietf.org/rfc/rfc2131.txt
 %4.4.1
+
+
+\subsubsection{Paquetes ARP con MAC destino 00:00:00:00:00:00}
+
+Esta MAC es utilizada como dirección de destino para los paquetes llamados de \textit{ARP gratuito}\footnote{\url{http://wiki.wireshark.org/Gratuitous_ARP}}. Este modo de uso del protocolo es mayormente para detectar conflictos de IP en la red o actualizar información en las tablas de los vecinos. La dirección en cuestión se interpreta como broadcast, pero fácilmente distinguible de los paquetes ARP estándar.
+
+
+\subsubsection{Direcciones en el rango 169.254.0.0/16}
+
+
+\subsubsection{Misma IP como origen y destino}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
