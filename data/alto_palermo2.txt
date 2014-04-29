@@ -1,5 +1,4 @@
 ARP-Operacion, ARP-MAC-Src, ARP-MAC-Dst, ARP-IP-Src, ARP-IP-Dst, Ether-MAC-Dst, Ether-MAC-Src, Tiempo
-ARP-Operacion, ARP-MAC-Src, ARP-MAC-Dst, ARP-IP-Src, ARP-IP-Dst, Ether-MAC-Dst, Ether-MAC-Src, Tiempo
 who-has, 00:09:0f:09:00:06, 00:00:00:00:00:00, 172.17.0.1, 172.17.76.210, 00:24:d6:03:91:9a, 00:09:0f:09:00:06, 1398700787
 who-has, 00:09:0f:09:00:06, 00:00:00:00:00:00, 172.17.0.1, 172.17.39.172, a0:6c:ec:b1:93:87, 00:09:0f:09:00:06, 1398700842
 who-has, 00:09:0f:09:00:06, 00:00:00:00:00:00, 172.17.0.1, 172.17.28.173, ff:ff:ff:ff:ff:ff, 00:09:0f:09:00:06, 1398700854
