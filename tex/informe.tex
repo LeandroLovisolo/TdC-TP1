@@ -386,7 +386,7 @@ La red de McDonald's es la red de mayor tamaño analizada. Pueden observarse a s
 
 Puede observarse en los gráficos de información, que tomando la fuente como $S_{src}$, la IP 172.17.12.1 que veíamos en los grafo como una IP muy frecuente en los paquetes ARP, posee demasiada información y no es retratada en el gráfico; y la IP 172.17.12.2 que también se muestra muy frecuente, aparece como una IP de baja información, pero no es la más baja, por lo que la heurística podría estar fallando.
 
-En el caso de tomar como fuente $S_dst$, ambas IP aparecen como los símbolos de menor información, ayudando a la suposición de que estas IP podrían  pertenecer a routers.
+En el caso de tomar como fuente $S_{dst}$, ambas IP aparecen como los símbolos de menor información, ayudando a la suposición de que estas IP podrían  pertenecer a routers.
 
 Además de las IP descriptas, existen dos más, 172.17.203.1 y 172.17.203.2, aisladas de las demás peticiones ARP en el grafo de la red, las cuales parecen tener un comportamiento similar a un router. Esto se debe a que las IP con las que interactúan, solo interactúan con estos dos supuestos routers. Estas IP no son significativas en términos de información, por lo que no aparecen en los gráficos, lo que pudiera ser una indicio de que la huerística de encontrar el router por menor información puede no identificar a todos los routers de la red. 
 
