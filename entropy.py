@@ -10,7 +10,7 @@ descartar = True
 #
 
 if len(sys.argv) < 2:
-	sys.exit("Uso (type puede ser: sender, reciever) : python2 entropy.py file_path type")
+	sys.exit("Uso (type puede ser: sender, receiver) : python2 entropy.py file_path type")
 
 ips_en_red = list()
 f = open(sys.argv[1], 'r')
@@ -55,7 +55,7 @@ for ip in ips_en_red:
 				ips_receptoras[index] = ips_receptoras[index] + 1
 
 		#Si el receptor es la IP
-		if sys.argv[2] == "reciever":
+		if sys.argv[2] == "receiver":
 			if datos[4] == ip:
 				total_receptor = total_receptor + 1
 				#Aumento la probabilidad de recibir un paquete a IP desde un emisor
@@ -69,7 +69,7 @@ for ip in ips_en_red:
 				entropy = entropy + (float(muestra)/total_emisor)*(-math.log((float(muestra)/total_emisor), 2))
 		print ip + " " + str(entropy)
 
-	if sys.argv[2] == "reciever":
+	if sys.argv[2] == "receiver":
 		for muestra in ips_emisoras:
 			if muestra != 0:
 				entropy = entropy + (float(muestra)/total_receptor)*(-math.log((float(muestra)/total_receptor), 2))
