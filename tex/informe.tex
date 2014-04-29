@@ -138,6 +138,14 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 \section{Desarrollo}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Resultados                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Resultados}
+
 \subsection{Red \emph{Alto Palermo}}
 
 \grafo{altopalermo}
@@ -160,14 +168,7 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 
 \grafo{starbucks}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Resultados                                                                %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Resultados}
-
+\subsection{Datos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Discusión                      			                                 %%
@@ -175,6 +176,18 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 \section{Discusión}
+
+\subsection{Datos encontrados}
+\subsubsection{Paquete ARP con IP fuente 0.0.0.0}
+Podemos detectar en la red de MC Donalds paquetes ARP Who-Has con ip fuente 0.0.0.0.
+La causa de estos ips es debido a lo siguiente:
+Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP's a ese ID.
+El cliente eventualmente podría recibir la oferta, tomar uno de esos IP's y extraer la dirección del router.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, coloca en el paquete Who-Has su MAC adress, la ip 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el who-has es respuesto, el cliente rechaza el IP elegido.
+
+%Ver como colocar las referencias
+%http://www.ietf.org/rfc/rfc2131.txt
+%4.4.1
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
