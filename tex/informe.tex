@@ -334,7 +334,7 @@ Pendiente.
 
 Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
-Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP a ese ID.
+Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
 Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respuesto, el cliente rechaza el IP elegido.
 
