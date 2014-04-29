@@ -13,8 +13,10 @@
 \contentsline {subsubsection}{\numberline {3.3.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{12}{subsubsection.3.3.2}
 \contentsline {subsection}{\numberline {3.4}Entrop\IeC {\'\i }as calculadas}{13}{subsection.3.4}
 \contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{13}{section.4}
-\contentsline {subsection}{\numberline {4.1}Fen\IeC {\'o}menos Destacables}{13}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Paquetes ARP con IP origen 0.0.0.0}{13}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Direcciones en el rango 169.254.0.0/16}{13}{subsubsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.3}Misma IP como origen y destino}{13}{subsubsection.4.1.3}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{13}{section.5}
+\contentsline {subsection}{\numberline {4.1}Paquetes ARP \textit {who-has} emitidos desde un \IeC {\'u}nico nodo origen hacia distintos nodos destino}{13}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Paquetes ARP \textit {who-has} emitidos desde un \IeC {\'u}nico nodo origen hacia un \IeC {\'u}nico nodo destino}{13}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Fen\IeC {\'o}menos Destacables}{13}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Paquetes ARP con IP origen 0.0.0.0}{13}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Direcciones en el rango 169.254.0.0/16}{13}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Misma IP como origen y destino}{14}{subsubsection.4.3.3}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{14}{section.5}

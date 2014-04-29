@@ -312,6 +312,22 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \section{Discusión}
 
+
+Describimos a continuación nuestra interpretación de algunos fenómenos observados, de manera de facilitar la discusión de los resultados obtenidos.
+
+
+\subsection{Paquetes ARP \textit{who-has} emitidos desde un único nodo origen hacia distintos nodos destino}
+
+Dado que la captura de paquetes fue realizada sobre redes wireless públicas, asumimos que la mayoría de las personas conectadas a la red sólo desean obtener acceso a internet, con lo que sus dispositivos sólo van a solicitar la dirección física del gateway que les ha sido asignado al conectarse a la red.
+
+Teniendo en cuenta lo anterior, interpretamos que este escenario es producido por un router que intenta mantener actualizada su tabla ARP emitiendo paquetes ARP \textit{who-has} periódicamente para cada dirección IP en dicha tabla, bajo la suposición que cada dirección IP es asignada a distintos hosts que se conectan y desconectan de la red a medida que pasa el tiempo.
+
+
+\subsection{Paquetes ARP \textit{who-has} emitidos desde un único nodo origen hacia un único nodo destino}
+
+Pendiente.
+
+
 \subsection{Fenómenos Destacables}
 
 \subsubsection{Paquetes ARP con IP origen 0.0.0.0}
