@@ -279,13 +279,32 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has
 \vspace{2cm}
 
 
-%% Entropías calculadas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Estadísticas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Entropías calculadas}
+% Constantes con las estadísticas calculadas
+\input{estadisticas}
 
-% Constantes con la entropía calculada
-\input{entropia}
+
+\subsection{Estadísticas}
+
+
+\subsubsection{Tamaño de las muestras y tiempos de captura}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Red & Tamaño de la muestra & Tiempo de captura (minutos)\\
+\hline
+Alto Palermo & \altopalermoSampleSize & \altopalermoSampleTime\\
+McDonald's   & \mcdonaldsSampleSize   & \mcdonaldsSampleTime\\
+Starbucks    & \starbucksSampleSize   & \starbucksSampleTime\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection{Entropía}
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -318,39 +337,40 @@ Describimos a continuación nuestra interpretación de algunos fenómenos observ
 
 \subsection{Nodos que emiten paquetes ARP \textit{who-has} hacia un único nodo destino}
 
-Dado que la captura de paquetes fue realizada sobre redes wireless públicas, asumimos que la mayoría de las personas conectadas a la red sólo desean obtener acceso a internet, con lo que sus dispositivos sólo van a solicitar la dirección física del gateway que les ha sido asignado al conectarse a la red.
+Dado que la captura de paquetes fue realizada sobre redes wireless públicas, asumimos que la mayoría de las personas conectadas a la red sólo desean obtener acceso a internet, con lo que sus dispositivos únicamente solicitan la dirección física del gateway que les asigna al conectarse a la red.
 
 
 \subsection{Nodos que emiten paquetes ARP \textit{who-has} hacia muchos nodos destino}
 
-Teniendo en cuenta lo anterior, interpretamos que este escenario es generalmente producido por un router que intenta mantener actualizada su tabla ARP emitiendo paquetes ARP \textit{who-has} periódicamente para cada dirección IP en dicha tabla, bajo la suposición que cada dirección IP es asignada a distintos hosts que se conectan y desconectan de la red a medida que pasa el tiempo.
+Teniendo en cuenta lo anterior, interpretamos que este escenario es generalmente producido por un router que intenta mantener actualizada su tabla ARP emitiendo paquetes ARP \textit{who-has} periódicamente para cada dirección IP en dicha tabla, bajo la suposición que cada dirección IP es asignada a distintos hosts que se conectan y desconectan de la red a medida que transcurre el tiempo.
 
 
+\subsection{Nodos que no emiten ningún paquete ARP}
+
+Suponemos que estos nodos se conectaron a la red y resolvieron la dirección física del gateway antes de iniciar la captura. De acuerdo con lo dicho anteriormente, cada nodo recibe periódicamente un paquete ARP \textit{who-has} emitido por el router al que está conecatdo. Este paquete incluye sus direcciones IP y física. Suponemos que cada nodo refresca su tabla ARP con esta información, lo que evita la necesidad de emitir paquetes ARP \textit{who-has} para solicitar la dirección física del router ya que esa entrada en su tabla ARP nunca llega a caducar.
 
 
-\subsection{Fenómenos Destacables}
+\subsection{Paquetes ARP con IP origen 0.0.0.0}
 
-\subsubsection{Paquetes ARP con IP origen 0.0.0.0}
-
-Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
+Pudimos detectar en las redes algunos paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
-Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respuesto, el cliente rechaza el IP elegido.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
 
 %Ver como colocar las referencias
 %http://www.ietf.org/rfc/rfc2131.txt
 %4.4.1
 
 
-\subsubsection{Direcciones en el rango 169.254.0.0/16}
+\subsection{Direcciones en el rango 169.254.0.0/16}
 
 Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/16 como dirección IP origen o destino, el cual difiere con el rango utilizado para las IP asignadas por el servidor DHCP a los dispositivos de la red. Las direcciones en este rango se denominan \textit{direcciones de enlace local}, y son direcciones reservadas. Un host puede eventualmente asignarse una IP libre (lo corrobora con ARP) de enlace local para poder acceder de forma básica a la red cuando todavía no se le ha asignado una IP válida, ya sea de forma manual o automática (DHCP).\footnote{\url{http://tools.ietf.org/html/rfc3927}}
 
 Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
 
 
-\subsubsection{Misma IP como origen y destino}
+\subsection{Misma IP como origen y destino}
 
 Este escenario se presentó en muchas ocasiones, en todas las redes analizadas. Se trata de una forma de uso del protocolo llamada \textit{Gratuitous ARP}\footnote{\url{http://wiki.wireshark.org/Gratuitous_ARP}}, que existe mayormente para detectar conflictos de IP en la red, o para actualizar la información en las tablas de los vecinos.
 
