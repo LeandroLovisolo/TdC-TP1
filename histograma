@@ -29,7 +29,7 @@ figure    = argv(){2};
 [ips, entropy] = textread(inputfile, '%s %f');
 
 bar(entropy);
-xlim([1 length(ips)]);
+ xlim([0 length(ips) + 1]);
 
 ylabel('Entrop\''ia');
 
