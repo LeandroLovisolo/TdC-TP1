@@ -1,4 +1,4 @@
-.PHONY: all clean informe.pdf graficos graficos-altopalermo graficos-mcdonalds graficos-starbucks entropia
+.PHONY: all clean informe.pdf graficos graficos-altopalermo graficos-mcdonalds graficos-starbucks estadisticas
 
 all: informe.pdf
 
@@ -33,5 +33,5 @@ graficos-starbucks:
 	./graficar_informacion tmp.txt starbucks-destination
 	rm tmp.txt
 
-entropia:
-	./entropia > tex/entropia.tex
+estadisticas:
+	./estadisticas > tex/estadisticas.tex

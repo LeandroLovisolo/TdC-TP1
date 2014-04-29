@@ -11,13 +11,14 @@
 \contentsline {subsection}{\numberline {3.3}Red \emph {Starbucks}}{11}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{11}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{12}{subsubsection.3.3.2}
-\contentsline {subsection}{\numberline {3.4}Entrop\IeC {\'\i }as calculadas}{13}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Estad\IeC {\'\i }sticas}{13}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Tama\IeC {\~n}o de las muestras y tiempos de captura}{13}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Entrop\IeC {\'\i }a}{13}{subsubsection.3.4.2}
 \contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{13}{section.4}
 \contentsline {subsection}{\numberline {4.1}Nodos que emiten paquetes ARP \textit {who-has} hacia un \IeC {\'u}nico nodo destino}{13}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Nodos que emiten paquetes ARP \textit {who-has} hacia muchos nodos destino}{13}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Nodos que no emiten ning\IeC {\'u}n paquete ARP}{13}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Fen\IeC {\'o}menos Destacables}{13}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Paquetes ARP con IP origen 0.0.0.0}{13}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Direcciones en el rango 169.254.0.0/16}{14}{subsubsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.3}Misma IP como origen y destino}{14}{subsubsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4}Paquetes ARP con IP origen 0.0.0.0}{13}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Direcciones en el rango 169.254.0.0/16}{14}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Misma IP como origen y destino}{14}{subsection.4.6}
 \contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{14}{section.5}
