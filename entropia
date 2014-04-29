@@ -1,0 +1,43 @@
+#!/usr/bin/env python2
+
+from math import log
+
+data = [{"name": "altopalermo", "path": "data/altopalermo.txt"},
+        {"name": "mcdonalds",   "path": "data/mcdonalds.txt"},
+        {"name": "starbucks",   "path": "data/starbucks.txt"}]
+
+def information(p): return -log(p, 2)
+
+def entropy(ips, n):
+    total = 0
+    for ip in ips.keys():
+        p = float(ips[ip]) / n
+        total += p * information(p)
+    return total
+
+def increment(ip, ips):
+    if ip not in ips.keys(): ips[ip] = 0
+    ips[ip] += 1
+
+if __name__ == "__main__":
+    for datum in data:
+        with open(datum["path"]) as file:
+            lines = file.readlines()
+
+        src_ips = {}
+        dst_ips = {}
+        n = 0
+
+        for line in lines[1:]:
+            fields = line.split(", ")
+            src_ip = fields[3]
+            dst_ip = fields[4]
+            increment(src_ip, src_ips)
+            increment(dst_ip, dst_ips)
+            n += 1
+
+        src_entropy = entropy(src_ips, n)
+        dst_entropy = entropy(dst_ips, n)
+
+        print "\\newcommand{\%sSrcEntropy}{%f}" % (datum["name"], src_entropy)
+        print "\\newcommand{\%sDstEntropy}{%f}" % (datum["name"], dst_entropy)
