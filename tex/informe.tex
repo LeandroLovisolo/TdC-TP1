@@ -175,7 +175,7 @@ Los medios utilizados para la captura de paquetes fueron tres redes Wi-Fi, de ac
 Identificamos las redes según su SSID:
 \begin{itemize}
 	\item Alto Palermo
-	\item MC Donald's
+	\item McDonald's
 	\item Starbucks
 \end{itemize}
 
@@ -312,7 +312,7 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \subsubsection{Paquetes ARP con IP origen 0.0.0.0}
 
-Podemos detectar en la red de Mc Donalds y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
+Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
