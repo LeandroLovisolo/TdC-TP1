@@ -173,6 +173,7 @@ Implementamos, para nuestro análisis, un \textit{sniffer}\footnote{\texttt{arps
 Los medios utilizados para la captura de paquetes fueron tres redes Wi-Fi, de acceso público y de frecuente utilización.
 
 Identificamos las redes según su SSID:
+
 \begin{itemize}
 	\item Alto Palermo
 	\item McDonald's
@@ -181,11 +182,14 @@ Identificamos las redes según su SSID:
 
 La captura de paquetes ARP consistió en el monitoreo de los paquetes ARP durante media hora aproximadamente para cada red Wi-Fi. Se almacenaron los campos principales de cada paquete para luego realizar el análisis estadístico.
 
-Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers de la red que actúan como \textit{gateway} de las redes analizadas. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \texttt{who-has} la tienen como emisor y la segunda, cuántos paquetes \texttt{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
+Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers que actúan como \textit{gateway} de cada red analizada. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \texttt{who-has} la tienen como emisor y la segunda, cuántos paquetes \texttt{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
 
-Consideramos como fuente de información a $S_{src}$ y $S_{dst}$ que tomamos como las creadoras de paquetes emisores de ARP y receptores de ARP respectivamente. Para cada fuente, calculamos la información de cada IP (símbolos de la fuente) y realizamos la identificación del o de los routers en la red según este parámetro, que según proponemos, las IP asociadas a éstos deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Nuestra suposición sobre esto, se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \texttt{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.}.
 
-Para la mejor visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{\texttt{tgfizar.py}} en Python. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
+A continuación, realizamos la identificación de el o los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
+
+Para obtener una visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{\texttt{tgfizar.py}} en Python para representar los grafos en formato Trivial Graph Format\footnote{\url{http://en.wikipedia.org/wiki/Trivial_Graph_Format}} que luego graficamos con el software yEd\footnote{\url{http://www.yworks.com/en/products_yed_about.html}}. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Resultados                                                                %%
