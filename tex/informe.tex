@@ -415,10 +415,9 @@ Además de estos dos fenómenos notorios, también pueden encontrarse IP del ran
 
 \section{Conclusión}
 
-Observamos que para las muestras obtenidas, tomar los símbolos con menor información de las fuentes de información $S_{src}$ y $S_{dst}$ no resultó una forma confiable de identificar los routers en cada red. Esto es por supuesto bajo la suposición que las heurísticas utilizadas para identificar los routers manualmente fueron adecuadas.
+Observamos que para las muestras obtenidas, tomar los símbolos con menor información de las fuentes de información $S_{src}$ y $S_{dst}$ muestra una confiabilidad aceptable para redes donde existe un sólo router o donde los paquetes ARP tienen una interacción intensa con una IP determinada. Para redes que evidencian tener múltiples routers, como la red McDonald's, la heurística presenta problemas. Esto es por supuesto bajo la suposición que las heurísticas utilizadas para identificar los routers manualmente fueron adecuadas.
 
-Sin embargo observamos una relación entre la exactitud del método propuesto y la cantidad de muestras tomadas en cada red.
-
+Como investigaciones futuras, proponemos la aplicación de estas heurísticas bajo diferentes intervalos de tiempo para poder encontrar un intervalo de confianza aceptable que permita identificar routers en la red utilizando un tiempo reducido.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Referencias                                                               %%
