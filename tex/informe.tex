@@ -42,9 +42,6 @@
 % en cada página.
 \raggedbottom
 
-% Deshabilita sangría en la primer línea de un párrafo.
-\setlength{\parindent}{0em}
-
 % Separación entre párrafos.
 \setlength{\parskip}{0.5em}
 
@@ -137,7 +134,7 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 \section{Introducción téorica}
 En este trabajo realizamos un análisis de redes mediante la captura de paquetes ARP.
 
-Address Resolution Protocol (ARP) es un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de IP's v4 con direcciones físicas MAC's.
+Address Resolution Protocol (ARP) es un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de IP v4 con direcciones físicas MAC.
 
 Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y de respuesta.
 \begin{itemize}
@@ -147,20 +144,21 @@ Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y 
 
 La estructura de los paquetes ARP es simple, consiste principalmente de los siguientes campos:
 
-\begin{tabular}{| l | p{10cm} |}
-	\hline
-	Operación & Especifica la operación que el emisor está realizando, 1 para petición, 2 para responder \\ \hline
-	Dirección MAC del emisor & \\ \hline
-	Dirección IP del emisor & \\ \hline
-	Dirección MAC del receptor & Este campo se ignora en las respuestas \\ \hline
-	Dirección IP del receptor & \\ \hline
-\end{tabular}
+\begin{description}
+	\item[Operación] Especifica la operación que el emisor está realizando: 1 para petición, 2 para responder
+	\item[Dirección MAC del emisor]
+	\item[Dirección IP del emisior]
+	\item[Dirección MAC del receptor] Este campo se ignora en las respuestas
+	\item[Dirección IP del receptor]
+\end{description}
 
-\textbf{Ejemplo práctico de su utilización:}
+A continuación se describe un ejemplo de uso típico observado en la práctica.
 
-Una máquina en una red quiere mandarle un paquete de datos a otra máquina en la misma red. Para esto, la máquina emisora busca en su tabla local, la dirección MAC asociada a la dirección IP a la cuál quiere mandar el paquete. Si no la encuentra, realiza el broadcasts de la petición ARP, la cual llegará eventualmente, si se encuentra conectada, a la máquina destino. La máquina destino recibirá la petición y la responderá de manera uni-cast hacia la máquina que realizó la petición, poniendo en el paquete su dirección MAC para que la máquina destino de la respuesta pueda conocer la dirección MAC que necesitaba.
+\begin{quotation}
+	Una máquina en una red quiere mandarle un paquete de datos a otra máquina en la misma red. Para esto, la máquina emisora busca en su tabla local, la dirección MAC asociada a la dirección IP a la cuál quiere mandar el paquete. Si no la encuentra, realiza el broadcasts de la petición ARP, la cual llegará eventualmente, si se encuentra conectada, a la máquina destino. La máquina destino recibirá la petición y la responderá de manera uni-cast hacia la máquina que realizó la petición, poniendo en el paquete su dirección MAC para que la máquina destino de la respuesta pueda conocer la dirección MAC que necesitaba.
+\end{quotation}
 
-El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP's, como fuente y como destino, tomando a las IP's como símbolos y estimado su probabilidad de aparición con su frecuencia muestral.
+El análisis de la red consiste en reconocer su topología en base al nivel de información que proveen las diferentes IP, como fuente y como destino, tomando a las IP como símbolos y estimado su probabilidad de aparición con su frecuencia muestral.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,14 +168,14 @@ El análisis de la red consiste en reconocer su topología en base al nivel de i
 
 \section{Desarrollo}
 
-Implementamos, para nuestro análisis, un \textit{sniffer} o monitor de paquetes, con el sentido de poder analizar los paquetes ARP siendo enviados vía broadcast por el medio utilizado. Esta implementación \footnote{arpsniffer.py} se realizó en Python y utiliza la biblioteca Scapy \footnote{\url{http://www.secdev.org/projects/scapy}} para la captura de paquetes, provista por la cátedra.
+Implementamos, para nuestro análisis, un \textit{sniffer}\footnote{\texttt{arpsniffer.py}} o monitor de paquetes, con el objetivo de poder analizar los paquetes ARP siendo enviados vía broadcast por el medio utilizado. Esta implementación se realizó en Python y utiliza la biblioteca Scapy \footnote{\url{http://www.secdev.org/projects/scapy}} para la captura de paquetes, provista por la cátedra.
 
 Los medios utilizados para la captura de paquetes fueron tres redes Wi-Fi, de acceso público y de frecuente utilización.
 
 Identificamos las redes según su SSID:
 \begin{itemize}
 	\item Alto Palermo
-	\item MC Donald's
+	\item McDonald's
 	\item Starbucks
 \end{itemize}
 
@@ -185,9 +183,9 @@ La captura de paquetes ARP consistió en el monitoreo de los paquetes ARP durant
 
 Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers de la red que actúan como \textit{gateway} de las redes analizadas. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \texttt{who-has} la tienen como emisor y la segunda, cuántos paquetes \texttt{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
 
-Consideramos como fuente de información a $S_{src}$ y $S_{dst}$ que tomamos como las creadoras de paquetes emisores de ARP y receptores de ARP respectivamente. Para cada fuente, calculamos la información de cada IP (símbolos de la fuente) y realizamos la identificación del o de los routers en la red según este parámetro, que según proponemos, las IP's asociadas a éstos deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Nuestra suposición sobre esto, se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
+Consideramos como fuente de información a $S_{src}$ y $S_{dst}$ que tomamos como las creadoras de paquetes emisores de ARP y receptores de ARP respectivamente. Para cada fuente, calculamos la información de cada IP (símbolos de la fuente) y realizamos la identificación del o de los routers en la red según este parámetro, que según proponemos, las IP asociadas a éstos deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Nuestra suposición sobre esto, se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
-Para la mejor visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{tgfizar.py} en Python. Tomamos como nodos los diferentes IP's de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
+Para la mejor visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{\texttt{tgfizar.py}} en Python. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Resultados                                                                %%
@@ -314,10 +312,10 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \subsubsection{Paquetes ARP con IP origen 0.0.0.0}
 
-Podemos detectar en la red de Mc Donalds y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
+Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \texttt{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
-Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP's a ese ID.
-El cliente eventualmente podría recibir la oferta, tomar uno de esos IP's y extraer la dirección del router.
+Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP a ese ID.
+El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
 Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \texttt{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \texttt{who-has} es respuesto, el cliente rechaza el IP elegido.
 
 %Ver como colocar las referencias
