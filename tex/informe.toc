@@ -1,9 +1,9 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Introducci\IeC {\'o}n t\IeC {\'e}orica}{3}{section.1}
-\contentsline {section}{\numberline {2}Desarrollo}{4}{section.2}
+\contentsline {section}{\numberline {2}Desarrollo}{3}{section.2}
 \contentsline {section}{\numberline {3}Resultados}{4}{section.3}
 \contentsline {subsection}{\numberline {3.1}Red \emph {Alto Palermo}}{4}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{4}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{5}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{5}{subsubsection.3.1.2}
 \contentsline {subsection}{\numberline {3.2}Red \emph {McDonald's}}{6}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{8}{subsubsection.3.2.1}
