@@ -335,11 +335,11 @@ Suponemos que estos nodos se conectaron a la red y resolvieron la dirección fí
 
 \subsubsection{Paquetes ARP con IP origen 0.0.0.0}
 
-Podemos detectar en la red de McDonald's y en la de Starbucks paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
+Pudimos detectar en las redes algunos paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
 Cuando un cliente se conecta a una red que posee un servidor DHCP y quiere recibir una IP de éste, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, éste manda una o varias ofertas de IP a ese ID.
 El cliente eventualmente podría recibir la oferta, tomar uno de esos IP y extraer la dirección del router.
-Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respuesto, el cliente rechaza el IP elegido.
+Como el servidor realiza la misma operación con todos los demás clientes que pidan una IP, el cliente debe comprobar que la IP que eligió no la tiene otro cliente. Para esto, envía un paquete \textit{who-has} con su MAC adress y la IP 0.0.0.0 como fuente para evitar confundir las ARP caches en otros hosts. Si el \textit{who-has} es respondido, el cliente rechaza el IP elegido.
 
 %Ver como colocar las referencias
 %http://www.ietf.org/rfc/rfc2131.txt
