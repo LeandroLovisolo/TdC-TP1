@@ -39,5 +39,10 @@ if __name__ == "__main__":
         src_entropy = entropy(src_ips, n)
         dst_entropy = entropy(dst_ips, n)
 
+        time = int((int(lines[-1].split(", ")[7]) -
+                    int(lines[ 1].split(", ")[7]))/60)
+
         print "\\newcommand{\%sSrcEntropy}{%f}" % (datum["name"], src_entropy)
         print "\\newcommand{\%sDstEntropy}{%f}" % (datum["name"], dst_entropy)
+        print "\\newcommand{\%sSampleSize}{%d}" % (datum["name"], n)
+        print "\\newcommand{\%sSampleTime}{%d}" % (datum["name"], time)

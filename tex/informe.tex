@@ -279,13 +279,32 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has
 \vspace{2cm}
 
 
-%% Entropías calculadas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Estadísticas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Entropías calculadas}
+% Constantes con las estadísticas calculadas
+\input{estadisticas}
 
-% Constantes con la entropía calculada
-\input{entropia}
+
+\subsection{Estadísticas}
+
+
+\subsubsection{Tamaño de las muestras y tiempos de captura}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Red & Tamaño de la muestra & Tiempo de captura (minutos)\\
+\hline
+Alto Palermo & \altopalermoSampleSize & \altopalermoSampleTime\\
+McDonald's   & \mcdonaldsSampleSize   & \mcdonaldsSampleTime\\
+Starbucks    & \starbucksSampleSize   & \starbucksSampleTime\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsubsection{Entropía}
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
