@@ -132,11 +132,13 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 \section{Introducción téorica}
+
 En este trabajo realizamos un análisis de redes mediante la captura de paquetes ARP.
 
 Address Resolution Protocol (ARP) es un protocolo usado frecuentemente por las redes locales para conectar las capas 3 (capa de red) y 2 (capa de enlace) mediante la conversión o identificación de IP v4 con direcciones físicas MAC.
 
 Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y de respuesta.
+
 \begin{itemize}
 	\item Los paquetes de petición (\textit{who-has}) son enviados mayormente en forma de broadcast con el objetivo de poder localizar la dirección MAC a la cuál le pertenece una IP conocida.
 	\item Los paquetes de respuesta (\textit{is-at}) son enviados de manera uni-cast ya que se utilizan para responder a la máquina que realizó una petición con anterioridad.
@@ -145,11 +147,11 @@ Existen dos tipos de paquetes posibles en el protocolo: paquetes de petición y 
 La estructura de los paquetes ARP es simple, consiste principalmente de los siguientes campos:
 
 \begin{itemize}
-	\item[-] Operación - Especifica la operación que el emisor está realizando: 1 para petición, 2 para responder
-	\item[-] Dirección MAC del emisor
-	\item[-] Dirección IP del emisior
-	\item[-] Dirección MAC del destinatario - Este campo se ignora en las peticiones
-	\item[-] Dirección IP del destinatario
+	\item Operación: Especifica la operación que el emisor está realizando. 1 para petición, 2 para responder.
+	\item Dirección MAC del emisor.
+	\item Dirección IP del emisior.
+	\item Dirección MAC del destinatario: Este campo se ignora en las peticiones.
+	\item Dirección IP del destinatario.
 \end{itemize}
 
 A continuación se describe un ejemplo de uso típico observado en la práctica.
@@ -184,9 +186,9 @@ La captura de paquetes ARP consistió en el monitoreo de los paquetes ARP durant
 
 Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los routers que actúan como \textit{gateway} de cada red analizada. Para esto, calculamos dos tipos de frecuencia muestral para cada IP, la primera en relación a cuántos paquetes \textit{who-has} la tienen como emisor y la segunda, cuántos paquetes \textit{who-has} la tienen como destino. De este análisis, conseguimos la frecuencia muestral de cada IP como emisor y como destino.
 
-Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.}.
+Para cada red consideramos las fuentes de información $S_{src}$ y $S_{dst}$ tales que sus símbolos son las direcciones IP que aparecen como origen y destino en los paquetes ARP \textit{who-has}, respectivamente. Para cada fuente, calculamos la información de cada símbolo\footnote{Es decir, cada dirección IP asociada a esa fuente de información.} utilizando un script\footnote{\texttt{informacion}}.
 
-A continuación, realizamos la identificación de el o los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
+A continuación intentamos identificar los routers en la red utilizando la información de cada IP para ambas fuentes $S_{src}$ y $S_{dst}$. Según suponemos, las IP asociadas a los routers deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Esta suposición se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
 Para obtener una visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{\texttt{tgfizar.py}} en Python para representar los grafos en formato Trivial Graph Format\footnote{\url{http://en.wikipedia.org/wiki/Trivial_Graph_Format}} que luego graficamos con el software yEd\footnote{\url{http://www.yworks.com/en/products_yed_about.html}}. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
 
@@ -209,15 +211,13 @@ Para obtener una visualización de la red con la que se está trabajando, grafic
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
-
 \input{altopalermo-source}
 \vspace{2cm}
 
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
+Limitamos el gráfico a los 10 símbolos con menor información.
 
 \input{altopalermo-destination}
 \vspace{2cm}
@@ -241,7 +241,7 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
+Limitamos el gráfico a los 10 símbolos con menor información.
 
 \input{mcdonalds-source}
 \vspace{2cm}
@@ -249,7 +249,7 @@ Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
+Limitamos el gráfico a los 10 símbolos con menor información.
 
 \input{mcdonalds-destination}
 \vspace{2cm}
@@ -265,7 +265,7 @@ Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}} \}$.
+Limitamos el gráfico a los 10 símbolos con menor información.
 
 \input{starbucks-source}
 \vspace{2cm}
@@ -273,7 +273,7 @@ Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \textit{who-has}
 
 \subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
-Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \textit{who-has}} \}$.
+Limitamos el gráfico a los 10 símbolos con menor información.
 
 \input{starbucks-destination}
 \vspace{2cm}
@@ -377,20 +377,20 @@ Este escenario se presentó en muchas ocasiones, en todas las redes analizadas. 
 Por ejemplo, si un host envía un Gratuitous ARP y recibe una respuesta, ya detectó un conflicto de IP, pues nadie debería responder a un request que tiene como destino el propio host.
 
 \subsection{Red \emph{Alto Palermo}}
-En esta red, puede obersvarse el fenómeno dónde existe una máquina la cual envía ARP's a multiples IP, que como interpretamos, debe ser el gateway de la red, el cuál desea mantener su tabla ARP actualizada. Casi la totalidad de los paquetes ARP capturados son desde el IP que suponemos el router, esto puede deberse a que, los hosts estaban conectados hace un tiempo y como suponemos anteriormente, los paquetes ARP enviados desde el router tienen como objetivo actualizar las tablas ARP de los destinatarios con su dirección MAC, preveniendo una petición por su parte.
+En esta red, puede obersvarse el fenómeno donde existe una máquina la cual envía ARP a múltiples IP, que como interpretamos debe ser el gateway de la red, el cual desea mantener su tabla ARP actualizada. Casi la totalidad de los paquetes ARP capturados son desde el IP que suponemos el router; esto puede deberse a que los hosts estaban conectados hace un tiempo y como suponemos anteriormente, los paquetes ARP enviados desde el router tienen como objetivo actualizar las tablas ARP de los destinatarios con su dirección MAC, previniendo una petición por su parte.
 
-Utilizando el grafo de la topología de la red según los paquetes ARP enviados y los datos de la información de cada IP, podemos inferir que la IP 172.17.0.1, la cuál tiene la mínima cantidad de información como símbolo, es decir, la IP que más actividad ARP posee, parece ser el router de la red.
+Utilizando el grafo de la topología de la red según los paquetes ARP enviados y la información de cada IP, podemos inferir que la IP 172.17.0.1, la cuál tiene la mínima cantidad de información como símbolo, es decir, la IP que más actividad ARP posee, parece ser el router de la red.
 
 \subsection{Red \emph{McDonald's}}
 La red de McDonald's es la red de mayor tamaño analizada. Pueden observarse a simple vista, dos IP, 172.17.12.2 la cuál tiene una alta cantidad de paquetes ARP como fuente y destino y 172.17.12.1 la cuál es parte del destino de muchos paquetes ARP capturados en la red.
 
-Puede observarse en los gráficos de información, que tomando la fuente como Ssrc, la IP 172.17.12.1 que veíamos en los grafo como una IP muy frecuente en los paquetes ARP, posee demaciada información y no es retratada en el gráfico y la IP 172.17.12.2 que también se muestra muy frecuente, aparece como una IP de baja información, pero no es la más baja, por lo que la heurística podría estar fallando.
+Puede observarse en los gráficos de información, que tomando la fuente como $S_{src}$, la IP 172.17.12.1 que veíamos en los grafo como una IP muy frecuente en los paquetes ARP, posee demasiada información y no es retratada en el gráfico; y la IP 172.17.12.2 que también se muestra muy frecuente, aparece como una IP de baja información, pero no es la más baja, por lo que la heurística podría estar fallando.
 
-En el caso de tomar como fuente Sdst, ambas IP IP 172.17.12.1 y IP 172.17.12.2 aparecen como las IP de menor información, ayudando a la suposición de que estas IP podrían  pertenecer a routers.
+En el caso de tomar como fuente $S_{dst}$, ambas IP aparecen como los símbolos de menor información, ayudando a la suposición de que estas IP podrían  pertenecer a routers.
 
-Además de las IP descriptas, existen dos IP, 172.17.203.1 y 172.17.203.2, aisladas de las demás peticiones ARP en el grafo de la red, las cuales parecen tener un comportamiento similar a un router, esto se debe a que las otras IP con las que interactúa, solo interactúan con estas. Estas IP no son significativas en términos de información, por lo que no aparecen en los gráficos, lo que pudiera ser una indicio de que la huerística de encontrar el router por menor información puede no identificar a todos los routers de la red. 
+Además de las IP descriptas, existen dos más, 172.17.203.1 y 172.17.203.2, aisladas de las demás peticiones ARP en el grafo de la red, las cuales parecen tener un comportamiento similar a un router. Esto se debe a que las IP con las que interactúan, solo interactúan con estos dos supuestos routers. Estas IP no son significativas en términos de información, por lo que no aparecen en los gráficos, lo que pudiera ser una indicio de que la huerística de encontrar el router por menor información puede no identificar a todos los routers de la red. 
 
-Como último, puede verse el fenómeno de la IP 0.0.0.0 y las IP en rango 169.254.0.0/16. Este fenómeno muestra la existencia de nuevas conecciones las cuales se asignaron IP en el rango 169.254.0.0/16, emitieron un paquete ARP \textit{gratuoitous} para avisar al resto que se asignaron esa IP temporal para luego realizar la comunicación con el servidor DHCP.
+Como último, puede verse el fenómeno de la IP 0.0.0.0 y las IP en rango 169.254.0.0/16. Este fenómeno muestra la existencia de nuevas conexiones las cuales se asignaron IP en el rango 169.254.0.0/16, emitieron un paquete \textit{Gratuitous ARP} para avisar al resto que se asignaron esa IP temporal, y posteriormente realizan la comunicación con el servidor DHCP.
 
 \subsection{Red \emph{Starbucks}}
 La red de Starbucks analizada, es facil notar en el grafo de la red dos fenómenos, la alta cantidad de paquetes ARP con destino y fuente 10.254.31.1 y los paquetes ARP que poseen como fuente a la ip 0.0.0.0 y tiene destinos múltiples.
@@ -408,6 +408,52 @@ Además de estos dos fenómenos notorios, también pueden encontrarse IP del ran
 
 
 \section{Conclusión}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Referencias                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Referencias}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{scapy}
+	\emph{Scapy Project}.
+	\url{http://www.secdev.org/projects/scapy}, 
+	Accedida en Abril de 2014
+
+\bibitem{yed}
+	\emph{yEd Graph Editor}.
+	\url{http://www.yworks.com/en/products_yed_about.html}, 
+	Accedida en Abril de 2014
+
+\bibitem{ARP}
+	\emph{An Ethernet Address Resolution Protocol}.
+	\url{http://tools.ietf.org/html/rfc826}, 
+	Accedida en Abril de 2014
+	
+\bibitem{auto-conf}
+	\emph{Dynamic Configuration of IPv4 Link-Local Addresses}.
+	\url{http://tools.ietf.org/html/rfc3927}, 
+	Accedida en Abril de 2014
+	
+\bibitem{DHCP}
+	\emph{Dynamic Host Configuration Protocol}.
+	\url{http://tools.ietf.org/html/rfc2131}, 
+	Accedida en Abril de 2014
+
+\bibitem{wikipedia}
+	\emph{Gratuitous ARP}.
+	\url{http://wiki.wireshark.org/Gratuitous_ARP}, 
+	Accedida en Abril de 2014
+
+\end{thebibliography}
 
 
 \end{document}
