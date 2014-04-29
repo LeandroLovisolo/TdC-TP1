@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {2}Desarrollo}{3}{section.2}
 \contentsline {section}{\numberline {3}Resultados}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Red \emph {Alto Palermo}}{5}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{5}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{6}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{6}{subsubsection.3.1.2}
 \contentsline {subsection}{\numberline {3.2}Red \emph {McDonald's}}{7}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{9}{subsubsection.3.2.1}
@@ -21,4 +21,8 @@
 \contentsline {subsection}{\numberline {4.4}Paquetes ARP con IP origen 0.0.0.0}{13}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Direcciones en el rango 169.254.0.0/16}{14}{subsection.4.5}
 \contentsline {subsection}{\numberline {4.6}Misma IP como origen y destino}{14}{subsection.4.6}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{14}{section.5}
+\contentsline {subsection}{\numberline {4.7}Red \emph {Alto Palermo}}{14}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.8}Red \emph {McDonald's}}{14}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.9}Red \emph {Starbucks}}{15}{subsection.4.9}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{15}{section.5}
+\contentsline {section}{\numberline {6}Referencias}{15}{section.6}
