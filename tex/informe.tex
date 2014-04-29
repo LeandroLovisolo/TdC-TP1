@@ -168,7 +168,7 @@ El análisis de la red consiste en reconocer su topología en base al nivel de i
 
 \section{Desarrollo}
 
-Implementamos, para nuestro análisis, un \textit{sniffer} o monitor de paquetes, con el sentido de poder analizar los paquetes ARP siendo enviados vía broadcast por el medio utilizado. Esta implementación \footnote{arpsniffer.py} se realizó en Python y utiliza la biblioteca Scapy \footnote{\url{http://www.secdev.org/projects/scapy}} para la captura de paquetes, provista por la cátedra.
+Implementamos, para nuestro análisis, un \textit{sniffer}\footnote{\texttt{arpsniffer.py}} o monitor de paquetes, con el objetivo de poder analizar los paquetes ARP siendo enviados vía broadcast por el medio utilizado. Esta implementación se realizó en Python y utiliza la biblioteca Scapy \footnote{\url{http://www.secdev.org/projects/scapy}} para la captura de paquetes, provista por la cátedra.
 
 Los medios utilizados para la captura de paquetes fueron tres redes Wi-Fi, de acceso público y de frecuente utilización.
 
@@ -185,7 +185,7 @@ Habiendo obtenido las capturas de las redes, nos proponemos identificar el o los
 
 Consideramos como fuente de información a $S_{src}$ y $S_{dst}$ que tomamos como las creadoras de paquetes emisores de ARP y receptores de ARP respectivamente. Para cada fuente, calculamos la información de cada IP (símbolos de la fuente) y realizamos la identificación del o de los routers en la red según este parámetro, que según proponemos, las IP asociadas a éstos deberían poseer la menor cantidad de información debido a que su frecuencia de recepción e incluso emisión de paquetes ARP debería ser la más alta. Nuestra suposición sobre esto, se basa en que el router será el dispositivo a los que todos los equipos querrán comunicarse (para poder tener acceso a internet), y mantendrán su ubicación actualizada para poder realizar la comunicación.
 
-Para la mejor visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{tgfizar.py} en Python. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
+Para la mejor visualización de la red con la que se está trabajando, graficamos las comunicaciones en la red en forma de grafos dirigidos, utilizando un script \footnote{\texttt{tgfizar.py}} en Python. Tomamos como nodos los diferentes IP de ésta y como aristas dirigidas la existencia de un paquete ARP con una fuente y un destino específico.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Resultados                                                                %%
