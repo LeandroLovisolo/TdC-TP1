@@ -1,6 +1,18 @@
 \select@language {spanish}
-\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}{section.1}
-\contentsline {section}{\numberline {2}Desarrollo}{2}{section.2}
-\contentsline {section}{\numberline {3}Resultados}{2}{section.3}
-\contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{2}{section.4}
-\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{2}{section.5}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n t\IeC {\'e}orica}{3}{section.1}
+\contentsline {section}{\numberline {2}Desarrollo}{4}{section.2}
+\contentsline {section}{\numberline {3}Resultados}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Red \emph {Alto Palermo}}{4}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{4}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{5}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Red \emph {McDonald's}}{6}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{8}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{9}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Red \emph {Starbucks}}{10}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{src}$}{10}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Informaci\IeC {\'o}n de los s\IeC {\'\i }mbolos de la fuente de informaci\IeC {\'o}n $S_{dst}$}{11}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Entrop\IeC {\'\i }as calculadas}{12}{subsection.3.4}
+\contentsline {section}{\numberline {4}Discusi\IeC {\'o}n}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Datos encontrados}{12}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Paquete ARP con IP fuente 0.0.0.0}{12}{subsubsection.4.1.1}
+\contentsline {section}{\numberline {5}Conclusi\IeC {\'o}n}{12}{section.5}

@@ -4,7 +4,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish, es-ucroman, es-noquoting]{babel}
 \usepackage{setspace}
-\usepackage{multicol}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{amsmath}
@@ -121,6 +120,16 @@ Petaccio, Lautaro José & 443/11 & lausuper@gmail.com\\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Índice                                                                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\tableofcontents
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introducción                                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -171,18 +180,31 @@ El análisis de la red consiste en reconocer su topología en base al nivel de i
 \section{Resultados}
 
 
+%% Alto Palermo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \subsection{Red \emph{Alto Palermo}}
 
 \grafo{altopalermo}
 
 
-\subsubsection{Direcciones IP origen de paquetes ARP \emph{who-has} modeladas como fuentes de información}
+\subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-\include{altopalermo-source}
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+
+\input{altopalermo-source}
+\vspace{2cm}
 
 
-\subsubsection{Direcciones IP destino de paquetes ARP \emph{who-has} modeladas como fuentes de información}
-\include{altopalermo-destination}
+\subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
+
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+
+\input{altopalermo-destination}
+\vspace{2cm}
+
+
+%% McDonald's %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subsection{Red \emph{McDonald's}}
@@ -198,14 +220,23 @@ El análisis de la red consiste en reconocer su topología en base al nivel de i
 \grafo{mcdonalds-0.0.0.0}
 
 
-\subsubsection{Direcciones IP origen de paquetes ARP \emph{who-has} modeladas como fuentes de información}
+\subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-\include{mcdonalds-source}
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+
+\input{mcdonalds-source}
+\vspace{2cm}
 
 
-\subsubsection{Direcciones IP destino de paquetes ARP \emph{who-has} modeladas como fuentes de información}
-\include{mcdonalds-destination}
+\subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
 
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+
+\input{mcdonalds-destination}
+\vspace{2cm}
+
+
+%% Starbucks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subsection{Red \emph{Starbucks}}
@@ -213,19 +244,29 @@ El análisis de la red consiste en reconocer su topología en base al nivel de i
 \grafo{starbucks}
 
 
-\subsubsection{Direcciones IP origen de paquetes ARP \emph{who-has} modeladas como fuentes de información}
+\subsubsection{Información de los símbolos de la fuente de información $S_{src}$}
 
-\include{starbucks-source}
+Donde $S_{src} = \{ \text{direcciones IP origen en paquetes ARP \emph{who-has}} \}$.
+
+\input{starbucks-source}
+\vspace{2cm}
 
 
-\subsubsection{Direcciones IP destino de paquetes ARP \emph{who-has} modeladas como fuentes de información}
-\include{starbucks-destination}
+\subsubsection{Información de los símbolos de la fuente de información $S_{dst}$}
+
+Donde $S_{dst} = \{ \text{direcciones IP destino en paquetes ARP \emph{who-has}} \}$.
+
+\input{starbucks-destination}
+\vspace{2cm}
+
+
+%% Entropías calculadas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subsection{Entropías calculadas}
 
 % Constantes con la entropía calculada
-\include{entropia}
+\input{entropia}
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -245,7 +286,6 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 \end{center}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Discusión                      			                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,8 +293,13 @@ Starbucks    & $S_{dst}$ & \starbucksDstEntropy\\
 
 \section{Discusión}
 
+
 \subsection{Datos encontrados}
+
+
 \subsubsection{Paquete ARP con IP fuente 0.0.0.0}
+
+
 Podemos detectar en la red de MC Donalds paquetes ARP Who-Has con ip fuente 0.0.0.0.
 La causa de estos ips es debido a lo siguiente:
 Cuando un cliente se conecta a un red que posee un servidor DHCP y quiere recibir una IP de esta, manda una petición con su ID en forma de broadcast para que lo detecte el servidor. Una vez detectado por el servidor, este manda una o varias ofertas de IP's a ese ID.
