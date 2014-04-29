@@ -1,0 +1,8 @@
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# LaTeX
+tex/*.aux
+tex/*.log
+tex/*.pdf
