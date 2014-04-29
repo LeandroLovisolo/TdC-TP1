@@ -350,9 +350,7 @@ Teniendo en cuenta lo anterior, interpretamos que este escenario es generalmente
 Suponemos que estos nodos se conectaron a la red y resolvieron la dirección física del gateway antes de iniciar la captura. De acuerdo con lo dicho anteriormente, cada nodo recibe periódicamente un paquete ARP \textit{who-has} emitido por el router al que está conecatdo. Este paquete incluye sus direcciones IP y física. Suponemos que cada nodo refresca su tabla ARP con esta información, lo que evita la necesidad de emitir paquetes ARP \textit{who-has} para solicitar la dirección física del router ya que esa entrada en su tabla ARP nunca llega a caducar.
 
 
-\subsection{Fenómenos Destacables}
-
-\subsubsection{Paquetes ARP con IP origen 0.0.0.0}
+\subsection{Paquetes ARP con IP origen 0.0.0.0}
 
 Pudimos detectar en las redes algunos paquetes ARP \textit{who-has} con IP origen 0.0.0.0.
 El motivo de uso de esta IP es el siguiente:
@@ -365,14 +363,14 @@ Como el servidor realiza la misma operación con todos los demás clientes que p
 %4.4.1
 
 
-\subsubsection{Direcciones en el rango 169.254.0.0/16}
+\subsection{Direcciones en el rango 169.254.0.0/16}
 
 Entre los paquetes capturados detectamos varios que usaban el rango 169.254.0.0/16 como dirección IP origen o destino, el cual difiere con el rango utilizado para las IP asignadas por el servidor DHCP a los dispositivos de la red. Las direcciones en este rango se denominan \textit{direcciones de enlace local}, y son direcciones reservadas. Un host puede eventualmente asignarse una IP libre (lo corrobora con ARP) de enlace local para poder acceder de forma básica a la red cuando todavía no se le ha asignado una IP válida, ya sea de forma manual o automática (DHCP).\footnote{\url{http://tools.ietf.org/html/rfc3927}}
 
 Esto le permite al host comunicarse con los otros dispositivos de la red, pero no con dispositivos externos a la misma.
 
 
-\subsubsection{Misma IP como origen y destino}
+\subsection{Misma IP como origen y destino}
 
 Este escenario se presentó en muchas ocasiones, en todas las redes analizadas. Se trata de una forma de uso del protocolo llamada \textit{Gratuitous ARP}\footnote{\url{http://wiki.wireshark.org/Gratuitous_ARP}}, que existe mayormente para detectar conflictos de IP en la red, o para actualizar la información en las tablas de los vecinos.
 
